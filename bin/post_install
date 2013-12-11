@@ -1,0 +1,5 @@
+#!/bin/bash -eu
+
+if [ -e $OPENSHIFT_JBOSSEWS_DIR/webapps/ROOT.war ]; then
+  cp $OPENSHIFT_WORKSPACE_DIR/webapps/ROOT.war $OPENSHIFT_REPO_DIR/webapps
+fi
