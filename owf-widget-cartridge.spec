@@ -2,7 +2,7 @@
 
 Summary:       Provides an Ozone Widget Quickstart Applications
 Name:          owf-widget-cartridge
-Version: 0.8.11
+Version: 0.8.12
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -74,3 +74,6 @@ fi
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Wed Dec 11 2013 Bret Frederick <bret.frederick@patvmackinc.com> 0.8.12-1
+- new package built with tito
+
