@@ -67,8 +67,8 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector address="${OPENSHIFT_OWF_IP}"
-               port="${OPENSHIFT_OWF_HTTP_PORT}"
+    <Connector address="${OPENSHIFT_WIDGET_IP}"
+               port="${OPENSHIFT_WIDGET_HTTP_PORT}"
                protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="443"/>

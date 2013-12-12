@@ -10,7 +10,7 @@ source ${OPENSHIFT_WIDGET_DIR}/bin/util
 
 echo "$version" > "$OPENSHIFT_WIDGET_DIR/env/OPENSHIFT_WIDGET_VERSION"
 
-//TODO: make this an ERB
+#TODO: make this an ERB
 sed -i "s/{APP_NAME}/${OPENSHIFT_APP_NAME}/g" ${OPENSHIFT_WIDGET_DIR}/template/pom.xml
 
 # Create and install the initial template WAR
