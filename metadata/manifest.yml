@@ -19,6 +19,9 @@ Website: https://shadow-soft.com
 Help-Topics:
   "Developer Center": https://bitbucket.org/pvm-engineering/owf-cartridge/overview
 Cart-Data:
+  - Key: widget_descriptor_url
+    Type: cart_data
+    Description: "Widget Descriptor URL"
   - Key: OPENSHIFT_JBOSSEWS_LOG_DIR
     Type: environment
     Description: "Directory to store application log files."

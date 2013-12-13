@@ -22,3 +22,14 @@ popd 1>/dev/null
 export JAVA_HOME=$OPENSHIFT_JBOSSEWS_JDK7
 reinstall_path
 
+client_result " "
+client_result "The Widget Descriptor URL is used to register this Widget in Ozone Widget Framework"
+client_result " "
+client_result "  Please make note of the Widget Descriptor URL:"
+client_result " "
+client_result "   Widget Descriptor URL: https://${OPENSHIFT_GEAR_DNS}/widget.html"
+client_result " "
+
+cart_props "widget_descriptor_url=https://${OPENSHIFT_GEAR_DNS}/widget.html"
+
+set_app_info "Widget Descriptor URL: https://${OPENSHIFT_GEAR_DNS}/widget.html"
