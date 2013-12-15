@@ -17,6 +17,16 @@ p=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u20
    "singleton": false,
    "width": 200,
    "widgetVersion": "1.0",
+   "intents": {
+      "send": [{
+         "action": "sayHello",
+         "dataTypes": ["text/plain"]
+      }],
+      "receive": [{
+         "action": "sayHello",
+         "dataTypes": ["text/plain"]
+      }]
+   },
    "height": 200,
    "widgetUrl": "https://<%= ENV['OPENSHIFT_GEAR_DNS'] %>/",
    "description": "Widget Template Application",
