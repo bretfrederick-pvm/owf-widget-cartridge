@@ -109,6 +109,9 @@
     clear: both;
   }
   </style>
+
+  <script type="text/javascript" src="/js/owf-widget-min.js"></script>
+
 </head>
 <body>
   <a href="http://patvmackinc.com" class="brand">
@@ -122,6 +125,15 @@
   </h1>
   <p>
     Place your application here
+  </p>
+  <p>
+    <script type="text/javascript">
+	if (OWF.Util.isRunningInOWF()) {
+		document.write("Ozone is ACTIVE");
+	} else {
+		document.write("Ozone is INACTIVE");
+    	}
+    </script>
   </p>
   <p>
     In order to commit to your new project, go to your projects git repo  (created with the rhc app create command) directory.
