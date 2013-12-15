@@ -10,7 +10,7 @@ p=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u20
 </script>
 <script id="owfTransport" type="text/javascript">
     var data = {
-   "universalName": "Widget.shadowsoft.com",
+   "universalName": "<%= ENV['OPENSHIFT_GEAR_DNS'] %>",
    "visible": true,
    "imageUrlSmall": "https://<%= ENV['OPENSHIFT_GEAR_DNS'] %>/images/pvm_logo_small.png",
    "imageUrlLarge": "https://<%= ENV['OPENSHIFT_GEAR_DNS'] %>/images/pvm_logo_small.png",
@@ -32,7 +32,7 @@ p=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u20
    "description": "Widget Template Application",
    "background": false,
    "widgetTypes": ["standard"],
-   "displayName": "MyWidget"
+   "displayName": "<%= ENV['OPENSHIFT_GEAR_NAME'] %>"
 };
     
     var jsonData = JSON.stringify({
