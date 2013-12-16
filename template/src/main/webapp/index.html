@@ -61,6 +61,11 @@
     border-bottom: 1px solid #999;
   }
 
+  h3 {
+    margin: 1em 0 .5em;
+    border-bottom: 1px solid #999;
+  }
+
   pre {
     background: black;
     padding: 1em 0 0;
@@ -111,6 +116,64 @@
   </style>
 
   <script type="text/javascript" src="/js/owf-widget-min.js"></script>
+  
+  <script type="text/javascript"> 
+
+  function sayHello() {
+    owfdojo.byId('sendmessage').innerHTML = 'Sending Intent: sayHello<br>';
+    OWF.Intents.startActivity(
+            {   
+               action:'sayHello',
+               dataType:'text/plain'
+            },
+            {
+               data: 'Hi There!'
+            },
+            function (dest) {
+		if (dest.length > 0) {
+                	owfdojo.byId('sendmessage').innerHTML += 'Intent was handled by ' + dest[0].id + '<br>';
+                	dest[0].onReady(
+                		function () {
+                			owfdojo.byId('sendmessage').innerHTML += dest[0].id + ' called notifyWidgetReady and is ready<br>';
+                		},
+                		this
+                	);
+                }
+                else {
+                	owfdojo.byId('sendmessage').innerHTML += 'Intent was canceled<br>';
+                }
+            }
+    );
+  }
+
+  owfdojo.addOnLoad(function () {
+  	OWF.ready(function () {
+        	owfdojo.byId('instanceId').innerHTML = '(InstanceId: ' + OWF.getInstanceId() + ')<br>';
+		OWF.Intents.receive(
+                        {
+                            action:'sayHello',
+                            dataType:'text/plain'
+                        },
+                        function (sender, intent, data) {
+                            owfdojo.byId('recvmessage').innerHTML = 'received '+intent.action+' '+owfdojo.toJson(data)+'<br>';
+                        }
+                );
+                OWF.notifyWidgetReady();
+            });
+        });
+  
+  owfdojo.addOnLoad(function() {
+  		if (OWF.Util.isRunningInOWF()) {
+			owfdojo.byId('owfActive').style.visibility = 'visible';
+               	//	owfdojo.byId('owfActive').innerHTML = 'Ozone is ACTIVE ';
+                //	owfdojo.byId('owfActive').innerHTML += '<button type="button" onclick="sayHello()">Say Hello!</button>';
+        	} else {
+			owfdojo.byId('owfActive').innerHTML = 'Ozone is INACTIVE ';
+        	}
+
+	});
+
+  </script>
 
 </head>
 <body>
@@ -126,15 +189,19 @@
   <p>
     Place your application here
   </p>
-  <p>
-    <script type="text/javascript">
-	if (OWF.Util.isRunningInOWF()) {
-		document.write("Ozone is ACTIVE");
-	} else {
-		document.write("Ozone is INACTIVE");
-    	}
-    </script>
-  </p>
+
+  <div id="owfActive">
+    Ozone Framework is ACTIVE <div id="instanceId" style="display:inline-block"></div><br>
+    <button type="button" onclick="sayHello()">Say Hello!</button><br>
+    Sending Intents
+    <pre>
+        <div id="sendmessage"></div>
+    </pre> 
+    Receiving Intents
+    <pre>
+        <div id="recvmessage"></div>
+    </pre>
+  </div>
   <p>
     In order to commit to your new project, go to your projects git repo  (created with the rhc app create command) directory.
   </p>
