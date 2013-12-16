@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OC2P</title>
+  <title><%= ENV['OPENSHIFT_GEAR_NAME'] %></title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/panels.css">
   <script type="text/javascript" src="/js/owf-widget-min.js"></script>
   <script type="text/javascript" src="/js/panels.js"></script>
   <script type="text/javascript"> 
+
+  var CHANNEL_NAME = "shadowsoft.openshift.sampleWidget.greeting";
 
   function sayHelloIntent() {
     owfdojo.byId('sendmessage').innerHTML = 'Sending Intent: ' + owfdojo.byId("helloIntentTxt").value + '<br>';
@@ -38,6 +40,26 @@
     );
   }
 
+  function pubHelloMessage() {
+        var msg = owfdojo.byId('pubHelloTxt').value;
+        OWF.Eventing.publish(CHANNEL_NAME, msg);
+	owfdojo.byId('pubmessage').innerHTML = 'publishing "' + msg + '" on channel ' + CHANNEL_NAME;	
+  }
+
+
+  var subUpdateMessage = function(sender, msg) {
+	owfdojo.byId('submessage').innerHTML = 'received "' + msg + '"';
+  };
+
+  owfdojo.addOnLoad(function() {
+                if (OWF.Util.isRunningInOWF()) {
+                        owfdojo.byId('owfActive').style.visibility = 'visible';
+                } else {
+                        owfdojo.byId('owfActive').innerHTML = 'Ozone is INACTIVE ';
+                }
+
+  });
+
   owfdojo.addOnLoad(function () {
   	OWF.ready(function () {
         	owfdojo.byId('instanceId').innerHTML = '(InstanceId: ' + OWF.getInstanceId() + ')<br>';
@@ -52,16 +74,13 @@
                 );
                 OWF.notifyWidgetReady();
             });
-        });
+  });
   
   owfdojo.addOnLoad(function() {
-  		if (OWF.Util.isRunningInOWF()) {
-			owfdojo.byId('owfActive').style.visibility = 'visible';
-        	} else {
-			owfdojo.byId('owfActive').innerHTML = 'Ozone is INACTIVE ';
-        	}
-
+	OWF.ready(function () {
+	    OWF.Eventing.subscribe(CHANNEL_NAME, this.subUpdateMessage);
 	});
+  });
 
   </script>
 
@@ -71,10 +90,10 @@
     <img class="brand-image"
          alt="PVM Logo" 
 	 src="images/pvm_logo_small.png">
-    <div class="brand-text"><strong>Open</strong> Command & Control PaaS</div>
+    <div class="brand-text"><strong>Ozone</strong> on OpenShift</div>
   </a>
   <h1>
-    <center>Welcome to The Cloud</center>
+    <center>Welcome to your application: <%= ENV['OPENSHIFT_GEAR_NAME'] %> </center>
   </h1>
   <p>
     Place your application here
@@ -117,7 +136,7 @@
     <div class="panelcollapsed">
       <h2 style="color:black">Inter-Widget Publish/Subscribe</h2>
       <div class="panelcontent">
-	<button type="button" onclick="pubHelloMessage()">Publish Hello Message!</button>
+        <button type="button" onclick="pubHelloMessage()">Publish Hello Message!</button>
         <input type="text" name="pubHelloTxt" id="pubHelloTxt" value="Hi There!"><br>
           <pre>
               <div id="pubmessage"></div>
@@ -126,13 +145,6 @@
           <pre>
               <div id="submessage"></div>
           </pre>
-      </div>
-    </div>
-
-    <div class="panelcollapsed">
-      <h2>Initially Collapsed</h2>
-      <div class="panelcontent">
-            <p>This panel is collapsed by default (until user sets a preference)</p>
       </div>
     </div>
   </div>
