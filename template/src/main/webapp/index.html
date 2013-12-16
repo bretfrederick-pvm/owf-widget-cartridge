@@ -115,11 +115,17 @@
     </div>
 
     <div class="panelcollapsed">
-      <h2>Another panel</h2>
+      <h2 style="color:black">Inter-Widget Publish/Subscribe</h2>
       <div class="panelcontent">
-            <p>Content goes here</p>
-            <p>More content</p>
-        <p>More content</p>
+	<button type="button" onclick="pubHelloMessage()">Publish Hello Message!</button>
+        <input type="text" name="pubHelloTxt" id="pubHelloTxt" value="Hi There!"><br>
+          <pre>
+              <div id="pubmessage"></div>
+          </pre>
+          Receiving
+          <pre>
+              <div id="submessage"></div>
+          </pre>
       </div>
     </div>
 
