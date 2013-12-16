@@ -57,7 +57,7 @@ then
 fi
 
 %postun
-/usr/sbin/oo-admin-cartridge --action erase --name owf-widget --version 1.0 --cartridge_version 0.0.1
+/usr/sbin/oo-admin-cartridge --action erase --name widget --version 1.0 --cartridge_version 0.0.1
 if [ -f /usr/sbin/oo-admin-broker-cache ]
 then
     echo "clearing broker cache"
