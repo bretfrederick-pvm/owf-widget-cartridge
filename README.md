@@ -5,10 +5,9 @@ Ozone Widget Cartridge on OpenShift
 This git repository contains the source for the owf-widget-cartridge RPM package.
 
 Dependencies:
- - JBoss EWS-2.0
 
 Provides:
- - Ozone Widget
+ - Ozone Widget template
 
 Building the RPM package
 ------------------------
