@@ -2,7 +2,7 @@
 
 Summary:       Provides an Ozone Widget Quickstart Applications
 Name:          owf-widget-cartridge
-Version: 0.8.12
+Version: 0.8.13
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -74,6 +74,30 @@ fi
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Mon Dec 30 2013 Bret Frederick <bret.frederick@patvmackinc.com> 0.8.13-1
+- update README (bret.frederick@patvmackinc.com)
+- OS-44 added collapsible panels for owf testing tools
+  (bret.frederick@patvmackinc.com)
+- OS-44 fixed name in erase command (bret.frederick@patvmackinc.com)
+- OS-44 #time 6h #comment added pub/sub test to template app
+  (bret.frederick@patvmackinc.com)
+- test (bret.frederick@patvmackinc.com)
+- OS-44 #comment finished Intents integration (bret.frederick@patvmackinc.com)
+- OS-44 #comment added Intents (sayHello) to the template app
+  (bret.frederick@patvmackinc.com)
+- OS-44 #comment added owf detection to template page
+  (bret.frederick@patvmackinc.com)
+- OS-44 #comment added OWF javascript libs (bret.frederick@patvmackinc.com)
+- OS-44 #comment widget name and universal name always unique
+  (bret.frederick@patvmackinc.com)
+- OS-44 #comment added sayHello intent to widget template
+  (bret.frederick@patvmackinc.com)
+- OS-44 #time 2h #comment added widget descriptor URL and cart property to show
+  the URL to users (bret.frederick@patvmackinc.com)
+- OS-44 #time 2h #comment baseline app working (bret.frederick@patvmackinc.com)
+- fixed cart name (bret.frederick@patvmackinc.com)
+- fixed bad manifest entry (bret.frederick@patvmackinc.com)
+
 * Wed Dec 11 2013 Bret Frederick <bret.frederick@patvmackinc.com> 0.8.12-1
 - new package built with tito
 
