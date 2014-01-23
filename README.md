@@ -29,6 +29,10 @@ Prerequisites
 
 > cd owf-widget-cartridge
 
+> tito init (first build after cloning only)
+
+> tito tag (for first build after cloning, only needed when you want to create a new tag...e.g. 'release')
+
 > tito build --rpm --test
 
 Tito will generate the rpm package in /tmp/tito/noarch/owf-cartridge{*}.rpm
