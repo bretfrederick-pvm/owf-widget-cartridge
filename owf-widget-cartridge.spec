@@ -2,7 +2,7 @@
 
 Summary:       Provides an Ozone Widget Quickstart Applications
 Name:          owf-widget-cartridge
-Version: 0.8.13
+Version: 0.8.14
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -74,6 +74,9 @@ fi
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Thu Jan 23 2014 Bret Frederick <bret.frederick@patvmackinc.com> 0.8.14-1
+- new package built with tito
+
 * Mon Dec 30 2013 Bret Frederick <bret.frederick@patvmackinc.com> 0.8.13-1
 - update README (bret.frederick@patvmackinc.com)
 - OS-44 added collapsible panels for owf testing tools
